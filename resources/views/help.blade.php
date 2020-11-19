@@ -24,28 +24,27 @@
 @endif
 
 <div class="form-group">
-<div class="col-lg-10">
-<input type="text" id="name" name="name" placeholder="Name" class="form-control" size="50">
+<div class="col-lg-6">
+<input type="text" id="name" name="name" placeholder="Name" class="form-control" size="20">
 </div>
 </div>
 
 <div class="form-group">
-<div class="col-md-8">
-<textarea id="complaint" name="complaint" placeholder="Complaint" class="form-control" rows="4" cols="70">
+<div class="col-md-6">
+<textarea id="complaint" name="complaint" placeholder="Complaint" class="form-control" rows="4" cols="20">
 </textarea>
 </div>
 </div>
 
 <div class="form-group">
-<div class="col-md-8">
-<textarea id="email" name="email" placeholder="Email" class="form-control" rows="4" cols="70">
-</textarea>
+<div class="col-md-6">
+<input type="text" id="email" name="email" placeholder="Email" class="form-control" rows="4" cols="20">
 </div>
 </div>
 
 <div class="form-group">
-<div class="col-lg-10">
-<input type="text" id="phone_no" name="phone_no" placeholder="Phone Number" class="form-control" size="40">
+<div class="col-lg-6">
+<input type="text" id="phone_no" name="phone_no" placeholder="Phone Number" class="form-control" size="20">
 </div>
 </div>
 
@@ -66,5 +65,7 @@
 </div>
 <hr/>
 
+@include('inc.footer')
 @endsection
+
     
