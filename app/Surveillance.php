@@ -15,6 +15,7 @@ class Surveillance extends Model
         'phone_no',
         'reason' ,
         'priority',
+        
 		
 	];
 }
