@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Request;
 use App\Vehicle;
 use App\Help;
 
@@ -56,9 +56,10 @@ class RequestController extends Controller
                 $helps-> name = $request->input('name');
                 $helps-> complaint = $request->input('complaint');
                 $helps-> email = $request->input('email');
-                $helps-> phone = $request->input('phone_no');
+                $helps-> phone_no = $request->input('phone_no');
     
                 $helps->save();
-            return redirect ('welcome')->with('success', 'Your complaint has been sent successfully!, we will get back to you ASAp') ;
+            return redirect ('/')->with('success', 'Your complaint has been sent successfully!, 
+            Authorities in charge will process your request & get back to you ASAP') ;
         }
 }
