@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Vehicle;
 
 class VehicleController extends Controller
 {
@@ -16,20 +17,19 @@ class VehicleController extends Controller
         return view('vehicle');
     }
 
-    public function save(Request $request)
+    public function save_vehicle(Request $request)
     {
         $request->validate([
             'name_of_vehicle'   => 'required|string',
-            'license_plate'   => 'required|string',
-            'chasis_no'       => 'required|date',
+            'license_plate'   => 'required|string|unique:vehicles',
+            'chasis_no'       => 'required|string',
             'engine_no'       => 'required|string',
-            'car'             => 'required|string',
             'model'   => 'required|string',
             'color'   => 'required|string',
             'owner'    => 'required|string',
             'phone_no'   => 'required|string',
             'address'   => 'required|string',
-            'email' => 'required |string|email|max:255|unique:members',
+            'email' => 'required|string|email|unique:vehicles',
             'gender'     => 'required|string',
             'id_means'   => 'required|string',
             'id_means_no'   => 'required|string',
@@ -42,7 +42,7 @@ class VehicleController extends Controller
     {
         //getting and passing the data by id
         $vehicles = Vehicle::find($id); 
-        return view ('update_vehicle', ['vehicles' => $vehicles]);
+        return view ('vehicle_update', ['vehicles' => $vehicles]);
     }
 
         public function edit (Request $request, $id)
@@ -50,33 +50,27 @@ class VehicleController extends Controller
        // validating form input
        $this->validate($request, [
         'name_of_vehicle'   => 'required|string',
-        'license_plate'   => 'required|string',
-        'chasis_no'       => 'required|date',
+        'chasis_no'       => 'required|string',
         'engine_no'       => 'required|string',
-        'car'             => 'required|string',
         'model'   => 'required|string',
         'color'   => 'required|string',
         'owner'    => 'required|string',
         'phone_no'   => 'required|string',
         'address'   => 'required|string',
-        'email' => 'required |string|email|max:255|unique:members',
         'gender'     => 'required|string',
         'id_means'   => 'required|string',
         'id_means_no'   => 'required|string',
     ]);
-    
+
     $data = array (
         'name_of_vehicle' => $request->input('name_of_vehicle'),
-        'license_plate' => $request->input('license_plate'),
         'chasis_no' => $request->input('chasis_no'),
         'engine_no' => $request->input('engine_no'),
-        'car' => $request->input('car'),
          'model' => $request->input('model'),
          'color' => $request->input('color'),
          'owner' => $request->input('owner'),
           'phone_no' => $request->input('phone_no'),
           'address' => $request->input('address'),
-          'email' => $request->input('email'),
            'gender' => $request->input('gender'),
            'id_means' => $request->input('id_means'),
            'id_means_no' => $request->input('id_means_no')
@@ -90,7 +84,7 @@ class VehicleController extends Controller
     public function read (Request $request, $id)
     {
         $vehicles = Vehicle::find($id); 
-        return view ('vehicle_crud', ['vehicles' => $vehicles]);
+        return view ('vehicle_read', ['vehicles' => $vehicles]);
   }
 
   //delete method
